@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2>List of games</h2>
+
+    <a data-th-href="@{/games(offset=${next})}">
+        <h4>Next <span data-th-text="${next}"></span></h4>
+    </a>
+
+    <table border="1">
+        <thead>
+            <td>gid</td>
+            <td>Image</td>
+            <td>Name</td>
+            <td>url</td>
+        </thead>
+        <tbody data-th-each="game : ${games}">
+            <td data-th-text="${game.gid}"></td>
+            <td>
+                <img data-th-src="${game.image}">
+            </td>
+            <td>
+                <a data-th-href="@{'/games/' + ${game.gid}}" data-th-text="${game.name}"></a>
+            </td>
+        
+            <td>
+                <a data-th-href="${game.url}" data-th-text="${game.url}"></a>
+            </td>
+
+ 
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h2 data-th-text="${game.name}"></h2>
+    <img data-th-src="${game.image}" alt="">
+    <br>
+    Year: <p data-th-text="${game.year}"></p>
+    Ranking: <p data-th-text="${game.ranking}"></p>
+    Users Rated: <p data-th-text="${game.usersRated}"></p>
+    <br>
+    <a data-th-href="${game.url}" data-th-text="${game.url}"></a>
+
+    <h3>Add Comment</h3>
+    <form data-th-action="@{'/games/' + ${game.gid}}" method="post" data-th-object="${comment}">
+
+        Username: <input type="text" data-th-field="*{user}">
+        <br>
+        Rating: <select data-th-field="*{rating}">
+            <option data-th-value="1" data-th-text="1"></option>
+            <option data-th-value="2" data-th-text="2"></option>
+            <option data-th-value="3" data-th-text="3"></option>
+            <option data-th-value="4" data-th-text="4"></option>
+            <option data-th-value="5" data-th-text="5"></option>
+
+        </select>
+        <br>
+        Comment: <input type="text" data-th-field="*{c_text}">
+        <br>
+        <button type="submit">Comment</button>
+
+    </form>
+
+    <p data-th-if="${comment.c_text != null}">
+        Your comment has been added.
+    </p>
+   
+</body>
+</html>
